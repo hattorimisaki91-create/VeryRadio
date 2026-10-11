@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY server/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+COPY server/ ./
+ENV VERY_DB=/tmp/very.db
+ENV PORT=8000
+CMD ["sh", "-c", "exec uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
