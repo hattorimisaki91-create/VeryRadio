@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: very-radio-trial
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: VERY_DB
+        value: /tmp/very.db
